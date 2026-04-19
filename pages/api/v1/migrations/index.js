@@ -37,7 +37,8 @@ export default async function migrations(req, res) {
       return res.status(200).json(migratedMigrations);
     }
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    console.error(error);
+    throw error;
   } finally {
     await dbClient.end();
   }
